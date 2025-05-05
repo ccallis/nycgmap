@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Maps Markers with Popups</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <style>
+      /* Set map size */
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+    </style>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=marker&callback=initMap"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      let map;
+
+      async function initMap() {
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+        map = new Map(document.getElementById("map"), {
+          zoom: 14,
+          center: { lat: 40.758652, lng: -73.978834 },
+          mapId: "DEMO_MAP_ID",
+        });
+
+        const markerData = [
+          { lat: 40.758652, lng: -73.978834, title: "Rockefeller Center" },
+          { lat: 40.767648, lng: -73.971976, title: "Central Park Zoo" },
+          { lat: 40.749875, lng: -73.993048, title: "Madison Square Garden" },
+          { lat: 40.753771, lng: -73.983656, title: "Bryant Park" },
+          { lat: 40.748099, lng: -73.984877, title: "Empire State Building" },
+        ];
+
+        // Marker 1
+        const marker1 = new AdvancedMarkerElement({
+          map: map,
+          position: markerData[0],
+          title: markerData[0].title,
+        });
+        const infoWindow1 = new google.maps.InfoWindow({
+          content: markerData[0].title,
+        });
+        marker1.addListener("click", () => {
+          infoWindow1.open(map, marker1);
+        });
+
+        // Marker 2
+        const marker2 = new AdvancedMarkerElement({
+          map: map,
+          position: markerData[1],
+          title: markerData[1].title,
+        });
+        const infoWindow2 = new google.maps.InfoWindow({
+          content: markerData[1].title,
+        });
+        marker2.addListener("click", () => {
+          infoWindow2.open(map, marker2);
+        });
+
+        // Marker 3
+        const marker3 = new AdvancedMarkerElement({
+          map: map,
+          position: markerData[2],
+          title: markerData[2].title,
+        });
+        const infoWindow3 = new google.maps.InfoWindow({
+          content: markerData[2].title,
+        });
+        marker3.addListener("click", () => {
+          infoWindow3.open(map, marker3);
+        });
+
+        // Marker 4
+        const marker4 = new AdvancedMarkerElement({
+          map: map,
+          position: markerData[3],
+          title: markerData[3].title,
+        });
+        const infoWindow4 = new google.maps.InfoWindow({
+          content: markerData[3].title,
+        });
+        marker4.addListener("click", () => {
+          infoWindow4.open(map, marker4);
+        });
+
+        // Marker 5
+        const marker5 = new AdvancedMarkerElement({
+          map: map,
+          position: markerData[4],
+          title: markerData[4].title,
+        });
+        const infoWindow5 = new google.maps.InfoWindow({
+          content: markerData[4].title,
+        });
+        marker5.addListener("click", () => {
+          infoWindow5.open(map, marker5);
+        });
+      }
+    </script>
+  </body>
+</html>
